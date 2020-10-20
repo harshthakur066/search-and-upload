@@ -1,32 +1,45 @@
 import React, { useState } from "react";
 import axios from "axios";
 // import { Search, Grid, Header, Segment } from "semantic-ui-react";
+import TableOutput from "../table/table";
 
 import "./search.css";
 
 const SearchBox = () => {
   const [input, setInput] = useState("");
+  const [result, setResult] = useState({});
 
-  const searchFile = () => {
+  const searchFile = async () => {
     try {
-      axios.post("search/key", input);
+      const res = await axios.post("search/key", input);
+      setResult(res);
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <div class="box">
-      <form onSubmit={searchFile}>
-        <input
-          type="text"
-          class="textbox"
-          placeholder="Search"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <input title="Search" value="&#128269;" type="submit" class="button" />
-      </form>
+    <div>
+      <div className="box">
+        <form onSubmit={searchFile}>
+          <input
+            type="text"
+            className="textbox"
+            placeholder="Search"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <input
+            title="Search"
+            value="&#128269;"
+            type="submit"
+            className="button"
+          />
+        </form>
+      </div>
+      <div>
+        <TableOutput result={result} />
+      </div>
     </div>
   );
 };
