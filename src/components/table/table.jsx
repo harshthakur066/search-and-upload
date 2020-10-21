@@ -3,48 +3,38 @@ import React, { useState } from "react";
 // import axios from "axios";
 import { Table } from "semantic-ui-react";
 
-const TableOutput = ({ result }) => {
-  console.log("result", result.length);
+import "./table.css";
 
-  const display = () => {
-    console.log("display");
-    result.map((item) => {
-      console.log("keys", item);
-      return (
-        // <Table.Body>
-        //   <Table.Row>
-        //     <Table.Cell>{item.AUDOOH}</Table.Cell>
-        //     <Table.Cell>{item.AUDIOM}</Table.Cell>
-        //     <Table.Cell>{item.USDAB}</Table.Cell>
-        //     <Table.Cell>{item.JPYSN}</Table.Cell>
-        //   </Table.Row>
-        // </Table.Body>
-        <h1>Hello Nooboon</h1>
-      );
-    });
-  };
+const TableOutput = ({ result }) => {
+  console.log("result", Object.keys(result).length);
+
+  const tabledata = Object.keys(result).map((item, index) => {
+    console.log("item", item);
+    return (
+      <Table.Body key={index}>
+        <Table.Row>
+          <Table.Cell>{item}</Table.Cell>
+          <Table.Cell>{result[item]}</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    );
+  });
 
   return (
-    <div>
+    <div className="table">
       {result.length === 0 ? (
         <h2 style={{ textAlign: "center" }}>No data</h2>
       ) : (
-        // <Table celled selectable>
-        //   <Table.Header>
-        //     <Table.Row>
-        //       <Table.HeaderCell>AUDOOH</Table.HeaderCell>
-        //       <Table.HeaderCell>AUDIOM</Table.HeaderCell>
-        //       <Table.HeaderCell>USDAB</Table.HeaderCell>
-        //       <Table.HeaderCell>JPYSN</Table.HeaderCell>
-        //     </Table.Row>
-        //   </Table.Header>
-        // </Table>
-        <div>
-          <h1>Hello Harsh</h1>
-          {display()}
-        </div>
+        <Table celled selectable>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Keys</Table.HeaderCell>
+              <Table.HeaderCell>Values</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          {tabledata}
+        </Table>
       )}
-      {/* {display()} */}
     </div>
   );
 };
