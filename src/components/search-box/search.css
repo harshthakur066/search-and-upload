@@ -16,6 +16,15 @@ body {
   justify-content: center;
 }
 
+.error {
+  text-align: center;
+}
+
+.output {
+  display: flex;
+  justify-content: center;
+}
+
 form {
   outline: 0;
   float: left;

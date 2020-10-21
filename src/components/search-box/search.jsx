@@ -7,9 +7,9 @@ import "./search.css";
 
 const SearchBox = () => {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState({});
 
-  const searchFile = async () => {
+  const searchBox = async () => {
     try {
       const res = await axios.post("search/key", input);
       setResult(res);
@@ -21,7 +21,7 @@ const SearchBox = () => {
   return (
     <div>
       <div className="box">
-        <form onSubmit={searchFile}>
+        <form onSubmit={searchBox}>
           <input
             type="text"
             className="textbox"
@@ -37,8 +37,22 @@ const SearchBox = () => {
           />
         </form>
       </div>
-      <div>
-        <TableOutput result={result} />
+      <div style={{ marginTop: "2rem" }}>
+        {Object.keys(result).length === 0 ? (
+          <h2 className="error">Search it!</h2>
+        ) : (
+          <div className="output">
+            <div style={{ marginRight: "10px" }}>
+              <h2>{Object.keys(result)}</h2>
+            </div>
+            <div>
+              <h2>:</h2>
+            </div>
+            <div style={{ marginLeft: "1rem" }}>
+              <h2>{Object.values(result)}</h2>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
