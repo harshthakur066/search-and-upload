@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import { Search, Grid, Header, Segment } from "semantic-ui-react";
-import TableOutput from "../table/table";
 
 import "./search.css";
 
 const SearchBox = () => {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState({}); // JSON data from backend will be stored here
 
   const searchBox = async () => {
     try {
       const res = await axios.post("search/key", input);
-      setResult(res);
+      setResult(res); // The data will be set here
     } catch (e) {
       console.log(e);
     }

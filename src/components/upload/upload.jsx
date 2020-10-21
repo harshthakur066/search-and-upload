@@ -12,7 +12,7 @@ const Upload = () => {
     AUDIOM: "x",
     USDAB: null,
     JPYSN: 1,
-  });
+  }); // Same data of JSON will be stored here from backend
 
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);

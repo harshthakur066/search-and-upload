@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-
-// import axios from "axios";
+import React from "react";
 import { Table } from "semantic-ui-react";
 
 import "./table.css";
@@ -22,7 +20,7 @@ const TableOutput = ({ result }) => {
 
   return (
     <div className="table">
-      {result.length === 0 ? (
+      {Object.keys(result).length === 0 ? (
         <h2 style={{ textAlign: "center" }}>No data</h2>
       ) : (
         <Table celled selectable>
