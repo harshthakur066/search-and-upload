@@ -7,7 +7,7 @@ import "./search.css";
 
 const SearchBox = () => {
   const [input, setInput] = useState("");
-  const [result, setResult] = useState({});
+  const [result, setResult] = useState([]);
 
   const searchFile = async () => {
     try {

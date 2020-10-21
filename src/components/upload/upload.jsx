@@ -7,12 +7,20 @@ import "./upload.css";
 
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [result, setResult] = useState({
-    harsh: "VDP",
-    soumajit: "KTR",
-    vikhyat: "RMP",
-    Shagun: "NCR",
-  });
+  const [result, setResult] = useState([
+    {
+      AUDOOH: "a",
+      AUDIOM: "b",
+      USDAB: "c",
+      JPYSN: "d",
+    },
+    {
+      AUDOOH: "w",
+      AUDIOM: "x",
+      USDAB: "y",
+      JPYSN: "z",
+    },
+  ]);
 
   const onFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
